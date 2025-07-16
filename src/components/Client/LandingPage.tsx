@@ -1,5 +1,7 @@
 import React from 'react';
 import { CheckCircle, Clock, Star, ArrowRight } from 'lucide-react';
+import { teamMembers } from '../../data/teamMembers';
+import TeamMemberCard from '../Team/TeamMemberCard';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -108,110 +110,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {/* Team Member 1 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Sofía Martínez"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Sofía Martínez</h4>
-                <p className="text-orange-600 font-medium">Directora General</p>
-              </div>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3184318/pexels-photo-3184318.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Lucía Hernández"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Lucía Hernández</h4>
-                <p className="text-orange-600 font-medium">Jefa de Operaciones</p>
-              </div>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Ana López"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Ana López</h4>
-                <p className="text-orange-600 font-medium">Especialista en Frenos</p>
-              </div>
-            </div>
-
-            {/* Team Member 4 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Pedro García"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Pedro García</h4>
-                <p className="text-orange-600 font-medium">Experto en Vulcanización</p>
-              </div>
-            </div>
-
-            {/* Team Member 5 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3184427/pexels-photo-3184427.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="María González"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">María González</h4>
-                <p className="text-orange-600 font-medium">Especialista en Transmisión</p>
-              </div>
-            </div>
-
-            {/* Team Member 6 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Carlos Mendoza"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Carlos Mendoza</h4>
-                <p className="text-orange-600 font-medium">Técnico en Diagnóstico</p>
-              </div>
-            </div>
-
-            {/* Team Member 7 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=2"
-                  alt="Roberto Vázquez"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Roberto Vázquez</h4>
-                <p className="text-orange-600 font-medium">Coordinador de Servicios</p>
-              </div>
-            </div>
+            {teamMembers.map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
+            ))}
           </div>
         </div>
       </div>
